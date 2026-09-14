@@ -1,0 +1,12 @@
+import { useEffect, useState } from "react";
+import toast from "react-hot-toast";
+import { api, apiMessage, unwrap } from "../../api/client";
+import { formatDateTime, titleCase } from "../../lib/format";
+import { Field, FilterBar, Input, LoadingBlock, PageHeader, SearchBox, Select, TableShell } from "../../components/common/UI";
+
+export default function AuditLogsPage(){
+ const [rows,setRows]=useState([]),[loading,setLoading]=useState(true),[module,setModule]=useState(""),[action,setAction]=useState(""),[from,setFrom]=useState(""),[to,setTo]=useState("");
+ const load=async()=>{setLoading(true);try{const params={limit:300};if(module)params.module=module;if(action)params.action=action;if(from)params.fromDate=from;if(to)params.toDate=to;setRows(unwrap(await api.get("/dashboard/audit-logs",{params}))||[]);}catch(e){toast.error(apiMessage(e));}finally{setLoading(false)}}; useEffect(()=>{const t=setTimeout(load,200);return()=>clearTimeout(t)},[module,action,from,to]);
+ const modules=[...new Set(rows.map(x=>x.module).filter(Boolean))].sort();
+ return <div className="space-y-6"><PageHeader eyebrow="Administration" title="Audit Logs" description="Super Admin visibility into logins, master changes, approvals, uploads and document activity."/><FilterBar><div className="w-full sm:w-52"><Select value={module} onChange={e=>setModule(e.target.value)} placeholder="All modules" options={modules}/></div><div className="w-full sm:w-64"><Input value={action} onChange={e=>setAction(e.target.value)} placeholder="Exact action filter"/></div><Field className="w-full sm:w-44"><Input type="date" value={from} onChange={e=>setFrom(e.target.value)}/></Field><Field className="w-full sm:w-44"><Input type="date" value={to} onChange={e=>setTo(e.target.value)}/></Field></FilterBar>{loading?<LoadingBlock/>:<TableShell><table className="table-base"><thead><tr><th>Date</th><th>User</th><th>Role</th><th>Module</th><th>Action</th><th>Reference</th><th>Unit</th><th>Details</th></tr></thead><tbody>{rows.map(x=><tr key={x.id}><td>{formatDateTime(x.created_at)}</td><td>#{x.user_id||"—"}</td><td>{titleCase(x.role)}</td><td>{titleCase(x.module)}</td><td className="font-semibold text-slate-900">{titleCase(x.action)}</td><td>{x.ref_no||x.ref_id||"—"}</td><td>{x.unit_id||"—"}</td><td><code className="block max-w-xs truncate rounded-lg bg-slate-100 px-2 py-1 text-[11px] text-slate-600">{x.details?JSON.stringify(x.details):"—"}</code></td></tr>)}</tbody></table></TableShell>}</div>;
+}

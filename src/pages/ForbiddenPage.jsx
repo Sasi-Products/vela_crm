@@ -1,0 +1,3 @@
+import { ShieldX } from "lucide-react";
+import { Link } from "react-router-dom";
+export default function ForbiddenPage() { return <div className="grid min-h-screen place-items-center bg-slate-50 p-6"><div className="panel max-w-lg p-10 text-center"><div className="mx-auto grid h-16 w-16 place-items-center rounded-3xl bg-rose-50 text-rose-600"><ShieldX size={30}/></div><h1 className="mt-5 text-2xl font-bold">Access not granted</h1><p className="mt-3 text-sm leading-6 text-slate-500">Your account does not have permission for this feature. Ask the Super Admin to enable it.</p><Link to="/" className="btn-primary mt-6">Return to dashboard</Link></div></div>; }
