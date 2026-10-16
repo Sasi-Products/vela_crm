@@ -116,6 +116,31 @@ const sections = [
   },
 
   {
+    label: "Spinning Mill Production",
+    items: [
+      { to: "/mill", label: "Production Dashboard", icon: Gauge, permission: "mill.view", end: true },
+      { to: "/mill/masters", label: "Factory & Machine Masters", icon: Building2, permission: "mill.view" },
+      { to: "/mill/recipes", label: "Mixing Recipes", icon: ClipboardList, permission: "mill.view" },
+      { to: "/mill/lots", label: "Production Planning", icon: ShoppingBag, permission: "mill.view" },
+      { to: "/mill/raw", label: "Raw Material Lots", icon: Boxes, permission: "mill.view" },
+      { to: "/mill/mixing", label: "Mixing", icon: PackageCheck, permission: "mill.view" },
+      { to: "/mill/carding", label: "Carding", icon: PackageCheck, permission: "mill.view" },
+      { to: "/mill/drawing", label: "Drawing", icon: PackageCheck, permission: "mill.view" },
+      { to: "/mill/oe", label: "OE Spinning", icon: Gauge, permission: "mill.view" },
+      { to: "/mill/waste", label: "Waste Recovery", icon: Boxes, permission: "mill.view" },
+      { to: "/mill/packing", label: "Yarn Packing", icon: PackageCheck, permission: "mill.view" },
+      { to: "/mill/dispatch", label: "Bag Dispatch", icon: Truck, permission: "mill.view" },
+      { to: "/mill/transfer", label: "Inter-Unit Transfer", icon: Warehouse, permission: "mill.view" },
+      { to: "/mill/attendance", label: "Labour & Wages", icon: UsersRound, permission: "mill.view" },
+      { to: "/mill/energy", label: "Electricity", icon: Gauge, permission: "mill.view" },
+      { to: "/mill/quality", label: "Yarn Quality", icon: PackageCheck, permission: "mill.view" },
+      { to: "/mill/costs", label: "Production Costs", icon: ReceiptText, permission: "mill.view" },
+      { to: "/mill/downtime", label: "Machine Downtime", icon: History, permission: "mill.view" },
+      { to: "/mill/reports", label: "Production Reports", icon: ClipboardList, permission: "mill.view" }
+    ]
+  },
+
+  {
     label: "Masters",
 
     items: [

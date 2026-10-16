@@ -46,6 +46,18 @@ import ProfilePage from "./pages/profile/ProfilePage";
 
 import ForbiddenPage from "./pages/ForbiddenPage";
 import NotFoundPage from "./pages/NotFoundPage";
+import MillDashboard from "./pages/mill/MillDashboard";
+import MillMasters from "./pages/mill/MillMasters";
+import MillRecipes from "./pages/mill/MillRecipes";
+import MillLots from "./pages/mill/MillLots";
+import MillRaw from "./pages/mill/MillRaw";
+import MillStage from "./pages/mill/MillStage";
+import MillPacking from "./pages/mill/MillPacking";
+import MillWaste from "./pages/mill/MillWaste";
+import MillDispatch from "./pages/mill/MillDispatch";
+import MillTransfer from "./pages/mill/MillTransfer";
+import MillRegister from "./pages/mill/MillRegister";
+import MillReports from "./pages/mill/MillReports";
 
 function HomeRoute() {
   const {
@@ -311,6 +323,26 @@ export default function App() {
             <HomeRoute />
           }
         />
+
+        <Route path="mill" element={<Protected permission="mill.view"><MillDashboard/></Protected>}/>
+        <Route path="mill/masters" element={<Protected permission="mill.view"><MillMasters/></Protected>}/>
+        <Route path="mill/recipes" element={<Protected permission="mill.view"><MillRecipes/></Protected>}/>
+        <Route path="mill/lots" element={<Protected permission="mill.view"><MillLots/></Protected>}/>
+        <Route path="mill/raw" element={<Protected permission="mill.view"><MillRaw/></Protected>}/>
+        <Route path="mill/mixing" element={<Protected permission="mill.view"><MillStage stage="mixing"/></Protected>}/>
+        <Route path="mill/carding" element={<Protected permission="mill.view"><MillStage stage="carding"/></Protected>}/>
+        <Route path="mill/drawing" element={<Protected permission="mill.view"><MillStage stage="drawing"/></Protected>}/>
+        <Route path="mill/oe" element={<Protected permission="mill.view"><MillStage stage="oe"/></Protected>}/>
+        <Route path="mill/packing" element={<Protected permission="mill.view"><MillPacking/></Protected>}/>
+        <Route path="mill/waste" element={<Protected permission="mill.view"><MillWaste/></Protected>}/>
+        <Route path="mill/dispatch" element={<Protected permission="mill.view"><MillDispatch/></Protected>}/>
+        <Route path="mill/transfer" element={<Protected permission="mill.view"><MillTransfer/></Protected>}/>
+        <Route path="mill/attendance" element={<Protected permission="mill.view"><MillRegister type="attendance"/></Protected>}/>
+        <Route path="mill/energy" element={<Protected permission="mill.view"><MillRegister type="energy_readings"/></Protected>}/>
+        <Route path="mill/quality" element={<Protected permission="mill.view"><MillRegister type="quality_checks"/></Protected>}/>
+        <Route path="mill/costs" element={<Protected permission="mill.view"><MillRegister type="cost_entries"/></Protected>}/>
+        <Route path="mill/downtime" element={<Protected permission="mill.view"><MillRegister type="downtimes"/></Protected>}/>
+        <Route path="mill/reports" element={<Protected permission="mill.view"><MillReports/></Protected>}/>
 
         <Route
           path="units"

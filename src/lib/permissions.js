@@ -1,4 +1,12 @@
 export const LOCAL_PERMISSION_CATALOG = [
+  { group: "Spinning Mill Production", permissions: [
+    { key: "mill.view", label: "View factory production & reports" },
+    { key: "mill.manage", label: "Manage masters and mixing recipes" },
+    { key: "mill.plan", label: "Create production plans and lots" },
+    { key: "mill.stock", label: "Post raw stock and transfers" },
+    { key: "mill.create", label: "Record production, attendance and bags" },
+    { key: "mill.approve", label: "Approve production, waste and packing" }
+  ] },
   {
     group: "Dashboard",
     permissions: [
